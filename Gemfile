@@ -48,7 +48,12 @@ group :production do
 	gem 'pg', '~> 0.15'
 end
 
+#Wygląd
+gem 'bootstrap-sass'
+
 #konta
+gem 'omniauth-twitter'
+
 #gem 'therubyracer'
 gem 'devise'
 #gem 'omniauth'
