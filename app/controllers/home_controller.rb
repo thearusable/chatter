@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
-  def show
+  layout "appi"
+
+  def home
   end
 end
