@@ -6,13 +6,13 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '56cef62350e2c99e2db8f5cbbfac43b996637b4692c4a0f651a6ebcc43a30d823f073ae4f3198695f80fd95177ea2fa9b903bc8fd43e8559efaf69c5420b3e91'
+  # config.secret_key = '7ad9172f2c8486e5971751420caa0f50a0a04b9a1c977df886549a851d8abc2969c245f99252de5acc650e9cf4b01101e56e788045b757a0e156e38c86d6a94f'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.mailer_sender = 'chatter@chatterrr.herokuapp.com'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -108,7 +108,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '20117a2608eea9ee4dd37c97c99a18dc876518a0edc61cef54494e8358059c733ecc0b0386fe35afb4ec92312b27eb70219992879aa9dd6e039e1fc69680c3b9'
+  # config.pepper = '8e5f5927159e92c6132a0d556526a5abb564204985f326ee40125cd9668e0df2a47bf74e408cf0b8eaec3a21a369732f0e736d3be0304f3fdb7d536761d022a9'
 
   # Send a notification email when the user's password is changed
   # config.send_password_change_notification = false
@@ -248,6 +248,10 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
+  # ID first, secret second
+  config.omniauth :twitter, 'FGwVBrcbOZd4Kv96mE3OCNl5y', 'q13TmHSgK7GqxxxcCzYkt8JuiluXlTdua0p9llOfRaxKdpdTah'
+  config.omniauth :google_oauth2, '479964785231-iavd3hpnanojh7n10h57na6qdgq39p5h.apps.googleusercontent.com', 'G6LwS5vVN9E8aoG-Mat8KZj_'
+
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
@@ -271,9 +275,4 @@ Devise.setup do |config|
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
-
-  #Add your ID and secret here
-  #ID first, secret second
-  config.omniauth :facebook, "322165138162080", "1569f034357b690de88c21e3bf126b88"
-
 end

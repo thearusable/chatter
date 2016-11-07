@@ -50,12 +50,13 @@ end
 
 #Wygląd
 
-#konta
-gem 'omniauth-twitter'
 
-#gem 'therubyracer'
+
+gem 'therubyracer'
+
+#konta
 gem 'devise'
-#gem 'omniauth'
+gem 'omniauth'
 gem 'omniauth-google-oauth2'
-#gem 'omniauth-google'
+gem 'omniauth-twitter'
 gem 'omniauth-facebook'
