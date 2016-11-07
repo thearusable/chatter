@@ -49,7 +49,6 @@ group :production do
 end
 
 #Wygląd
-gem 'bootstrap-sass'
 
 #konta
 gem 'omniauth-twitter'
