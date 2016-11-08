@@ -251,7 +251,8 @@ Devise.setup do |config|
   # ID first, secret second
   config.omniauth :twitter, 'FGwVBrcbOZd4Kv96mE3OCNl5y', 'q13TmHSgK7GqxxxcCzYkt8JuiluXlTdua0p9llOfRaxKdpdTah'
   config.omniauth :google_oauth2, '479964785231-iavd3hpnanojh7n10h57na6qdgq39p5h.apps.googleusercontent.com', 'G6LwS5vVN9E8aoG-Mat8KZj_'
-
+  config.omniauth :facebook, '322165138162080', '1569f034357b690de88c21e3bf126b88',
+  scope: 'public_profile', info_fields: 'id,name,link'
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
