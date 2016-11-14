@@ -42,6 +42,8 @@ end
 group :production do
 	# Use postgresql as the database for Active Record
 	gem 'pg', '~> 0.15'
+  # Zarzadzanie kompilacja assetow
+  gem 'rails_12factor'
 end
 
 #Wypełnianie bazy

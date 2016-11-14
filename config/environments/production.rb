@@ -2,10 +2,10 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
-  config.cache_classes = true
   config.serve_static_assets = true
-  config.assets.compile = true
-  config.assets.digest = true
+  config.assets.compile = false #To stop run time assets precompile in production.
+  config.assets.digest = true  #To access assets which are precompiled and in their names have appendend digets by rails
+  config.cache_classes = true #allowing caching assets
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
