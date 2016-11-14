@@ -36,6 +36,8 @@ group :development, :test do
   gem 'byebug'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+  # load environment variables from .env into ENV 
+  gem 'dotenv-rails'
 end
 
 group :development do

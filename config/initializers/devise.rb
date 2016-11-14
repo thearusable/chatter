@@ -249,9 +249,9 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   # ID first, secret second
-  config.omniauth :twitter, 'FGwVBrcbOZd4Kv96mE3OCNl5y', 'q13TmHSgK7GqxxxcCzYkt8JuiluXlTdua0p9llOfRaxKdpdTah', setup: true
-  config.omniauth :google_oauth2, '479964785231-iavd3hpnanojh7n10h57na6qdgq39p5h.apps.googleusercontent.com', 'G6LwS5vVN9E8aoG-Mat8KZj_', setup: true
-  config.omniauth :facebook, '322165138162080', '1569f034357b690de88c21e3bf126b88',
+  config.omniauth :twitter, ENV['TWITTER_ID'], ENV['TWITTER_SECRET'], setup: true
+  config.omniauth :google_oauth2, ENV['GOOGLE_ID'], ENV['GOOGLE_SECRET'], setup: true
+  config.omniauth :facebook, ENV['FACEBOOK_ID'], ENV['FACEBOOK_SECRET'],
     scope: 'public_profile', info_fields: 'id,name,link', setup: true
 
 
