@@ -18,14 +18,17 @@
         <li><a href="#">About</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li>  <%= link_to "Zaloguj Sie", new_user_session_url %>  </li>
-        <li><a href="#">Nazwa Uzytkownika</a></li>
+        <% if @user then %>
+        <li><%= link_to @user.email, current_user %></li>
+        <% else %>
+        <li><a href="#">Niezalogowany</a></li>
+        <% end %>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#">Edit Profile</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">Logout</a></li>
+            <li> <%= link_to "Signout", destroy_user_session_path, method: :delete %></li>
           </ul>
         </li>
       </ul>

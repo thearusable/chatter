@@ -6,13 +6,13 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '7ad9172f2c8486e5971751420caa0f50a0a04b9a1c977df886549a851d8abc2969c245f99252de5acc650e9cf4b01101e56e788045b757a0e156e38c86d6a94f'
+  # config.secret_key = '4225a1e84031c6e2f2e966f5787882f8125ab9328bdf1b50819c0a043878c3814b40b3a7dea2cddc28031dfc9c182bbd3d026ff3e3994ab9bec44d50279b226a'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'chatter@chatterrr.herokuapp.com'
+  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -108,7 +108,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '8e5f5927159e92c6132a0d556526a5abb564204985f326ee40125cd9668e0df2a47bf74e408cf0b8eaec3a21a369732f0e736d3be0304f3fdb7d536761d022a9'
+  # config.pepper = 'c72f556d643684f11b45a2534e5002f082c52abf35d1426fd9c67384b2b2ecce7f6f7bd8d45c8f60df9b36e6f32edf96da5715e764b3ec1173d2b2b2565a38da'
 
   # Send a notification email when the user's password is changed
   # config.send_password_change_notification = false
@@ -249,10 +249,11 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   # ID first, secret second
-  config.omniauth :twitter, 'FGwVBrcbOZd4Kv96mE3OCNl5y', 'q13TmHSgK7GqxxxcCzYkt8JuiluXlTdua0p9llOfRaxKdpdTah'
-  config.omniauth :google_oauth2, '479964785231-iavd3hpnanojh7n10h57na6qdgq39p5h.apps.googleusercontent.com', 'G6LwS5vVN9E8aoG-Mat8KZj_'
+  config.omniauth :twitter, 'FGwVBrcbOZd4Kv96mE3OCNl5y', 'q13TmHSgK7GqxxxcCzYkt8JuiluXlTdua0p9llOfRaxKdpdTah', setup: true
+  config.omniauth :google_oauth2, '479964785231-iavd3hpnanojh7n10h57na6qdgq39p5h.apps.googleusercontent.com', 'G6LwS5vVN9E8aoG-Mat8KZj_', setup: true
   config.omniauth :facebook, '322165138162080', '1569f034357b690de88c21e3bf126b88',
-  scope: 'public_profile', info_fields: 'id,name,link'
+    scope: 'public_profile', info_fields: 'id,name,link', setup: true
+
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
