@@ -1,9 +1,8 @@
-class ChatterController < ApplicationController
-  helper_method :current_user, :signed_in?
+class UsersController < ApplicationController
   before_action :authenticate_user!
 
-  def index
-    @user = current_user
+  def show
+    @user = User.find(params[:id])
     @identyties = Identity.where(:id => @user.id)
 
     @name
@@ -12,8 +11,7 @@ class ChatterController < ApplicationController
     else
       @name = @identities.first.name
     end
-
-
+    #profile
   end
 
 end

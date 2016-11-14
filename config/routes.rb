@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users, class_name: 'FormUser', :controllers => { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'registrations'}
 
+  #temporary
+  resource :users, :only => [:show]
+
   #setup and upgrade
   #devise_scope :user do
   #  get '/users/auth/:provider/upgrade' => 'users/omniauth_callbacks#upgrade', as: :user_omniauth_upgrade
