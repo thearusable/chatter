@@ -4,7 +4,7 @@ https://chatterrr.herokuapp.com/
 
 # Zaplecze:
 
-https://chatterrr.herokuapp.com/admin
+https://chatterrr.herokuapp.com/admin/login
 
 Administrator:  
 Login: admin@example.com  
