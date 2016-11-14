@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 # Use SCSS for stylesheets
+gem 'sass'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -19,6 +20,8 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'therubyracer'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -33,6 +36,8 @@ group :development, :test do
   gem 'byebug'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+  # load environment variables from .env into ENV 
+  gem 'dotenv-rails'
 end
 
 group :development do
@@ -48,15 +53,19 @@ group :production do
 	gem 'pg', '~> 0.15'
 end
 
+#Wypełnianie bazy
+gem 'faker'
+
+#Landing page
+gem 'frontend-generators'
+
 #Wygląd
 gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
 
 #konta
-gem 'omniauth-twitter'
-
-#gem 'therubyracer'
 gem 'devise'
-#gem 'omniauth'
+gem 'omniauth'
 gem 'omniauth-google-oauth2'
-#gem 'omniauth-google'
+gem 'omniauth-twitter'
 gem 'omniauth-facebook'

@@ -6,7 +6,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '56cef62350e2c99e2db8f5cbbfac43b996637b4692c4a0f651a6ebcc43a30d823f073ae4f3198695f80fd95177ea2fa9b903bc8fd43e8559efaf69c5420b3e91'
+  # config.secret_key = '4225a1e84031c6e2f2e966f5787882f8125ab9328bdf1b50819c0a043878c3814b40b3a7dea2cddc28031dfc9c182bbd3d026ff3e3994ab9bec44d50279b226a'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -108,7 +108,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '20117a2608eea9ee4dd37c97c99a18dc876518a0edc61cef54494e8358059c733ecc0b0386fe35afb4ec92312b27eb70219992879aa9dd6e039e1fc69680c3b9'
+  # config.pepper = 'c72f556d643684f11b45a2534e5002f082c52abf35d1426fd9c67384b2b2ecce7f6f7bd8d45c8f60df9b36e6f32edf96da5715e764b3ec1173d2b2b2565a38da'
 
   # Send a notification email when the user's password is changed
   # config.send_password_change_notification = false
@@ -248,6 +248,12 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
+  # ID first, secret second
+  config.omniauth :twitter, ENV['TWITTER_ID'], ENV['TWITTER_SECRET'], setup: true
+  config.omniauth :google_oauth2, ENV['GOOGLE_ID'], ENV['GOOGLE_SECRET'], setup: true
+  config.omniauth :facebook, ENV['FACEBOOK_ID'], ENV['FACEBOOK_SECRET'],
+    scope: 'public_profile', info_fields: 'id,name,link', setup: true
+
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
@@ -271,9 +277,4 @@ Devise.setup do |config|
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
-
-  #Add your ID and secret here
-  #ID first, secret second
-  config.omniauth :facebook, "322165138162080", "1569f034357b690de88c21e3bf126b88"
-
 end

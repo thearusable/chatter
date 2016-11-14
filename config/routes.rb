@@ -1,12 +1,18 @@
 Rails.application.routes.draw do
-  get 'auth/:provider/callback', to: 'sessions#create'
-  get 'auth/failure', to: redirect('/')
-  get 'signout', to: 'sessions#destroy', as: 'signout'
+  devise_for :users, class_name: 'FormUser', :controllers => { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'registrations'}
 
-  resources :sessions, only: [:create, :destroy]
-  resource :home, only: [:show]
+  #temporary
+  resource :users, :only => [:show]
 
-  root to: "home#show"
+  #setup and upgrade
+  #devise_scope :user do
+  #  get '/users/auth/:provider/upgrade' => 'users/omniauth_callbacks#upgrade', as: :user_omniauth_upgrade
+  #  get '/users/auth/:provider/setup', :to => 'users/omniauth_callbacks#setup'
+  #end
+
+  resource :chatter, only: [:index]
+
+  root to: "chatter#index"
 
 
   #devise_for :users
