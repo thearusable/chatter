@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable
 
   has_many :identities
+  has_many :conversations, :foreign_key => :sender_id
 
 def twitter
   identities.where( :provider => "twitter" ).first

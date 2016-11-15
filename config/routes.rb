@@ -12,10 +12,13 @@ Rails.application.routes.draw do
   #  get '/users/auth/:provider/setup', :to => 'users/omniauth_callbacks#setup'
   #end
 
-  resource :chatter, only: [:index]
+  #resource :chatter, only: [:index]
 
-  root to: "chatter#index"
+  root to: "application#index"
 
+  resources :conversations do
+    resources :messages
+  end
 
   #devise_for :users
 
