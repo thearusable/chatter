@@ -1,15 +1,24 @@
-# Wersja Live:
+# README
 
-https://chatterrr.herokuapp.com/
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-# Zaplecze:
+Things you may want to cover:
 
-https://chatterrr.herokuapp.com/admin/login
+* Ruby version
 
-Administrator:  
-Login: admin@example.com  
-Hasło: password
+* System dependencies
 
-Moderator:  
-Login: moderator@example.com  
-Hasło: password
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
