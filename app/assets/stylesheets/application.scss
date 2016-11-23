@@ -13,7 +13,8 @@
  *= require_tree .
  *= require_self
  */
-@import "bootstrap";
+@import "bootstrap.min";
+@import "chat";
 
 #messages {
   max-height: 450px;
