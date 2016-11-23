@@ -1,32 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <meta content='<%= user_signed_in? ? current_user.id : "" %>' name='user-id'/>
+<html>
+  <head>
+    <title>Chatter</title>
+    <%= csrf_meta_tags %>
 
-  <title>Chatty</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css' %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
 
-  <!-- shiv here -->
-
-</head>
-
-<body>
-
-<%= render 'layouts/navbar' %>
-
-<div class="container">
-  <!-- flash messages here -->
-  <%= yield %>
-</div>
-
-</body>
-
+  <body>
+    <%= yield %>
+  </body>
 </html>
