@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :chat_rooms, only: [:new, :create, :show, :index]
-  root 'chat_rooms#index'
+
+  resource :users, :only => [:show]
+
+  root 'application#index'
 
   mount ActionCable.server => '/cable'
+
+  resources :chat_rooms do
+    resources :messages
+  end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
