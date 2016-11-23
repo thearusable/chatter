@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,62 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161115092233) do
+ActiveRecord::Schema.define(version: 20161116213112) do
 
-  create_table "admin_users", force: :cascade do |t|
-    t.string   "email",                  default: "",    null: false
-    t.string   "encrypted_password",     default: "",    null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.boolean  "master_admin",           default: false
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
-  end
-
-  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
-  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
-
-  create_table "conversations", force: :cascade do |t|
-    t.integer  "sender_id"
-    t.integer  "recipient_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
-  create_table "identities", force: :cascade do |t|
+  create_table "chat_rooms", force: :cascade do |t|
+    t.string   "title"
     t.integer  "user_id"
-    t.string   "provider"
-    t.string   "accesstoken"
-    t.string   "refreshtoken"
-    t.string   "uid"
-    t.string   "name"
-    t.string   "email"
-    t.string   "nickname"
-    t.string   "image"
-    t.string   "phone"
-    t.string   "urls"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_chat_rooms_on_user_id"
   end
-
-  add_index "identities", ["user_id"], name: "index_identities_on_user_id"
 
   create_table "messages", force: :cascade do |t|
     t.text     "body"
-    t.integer  "conversation_id"
     t.integer  "user_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "chat_room_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["chat_room_id"], name: "index_messages_on_chat_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
-
-  add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id"
-  add_index "messages", ["user_id"], name: "index_messages_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -81,9 +43,8 @@ ActiveRecord::Schema.define(version: 20161115092233) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end
