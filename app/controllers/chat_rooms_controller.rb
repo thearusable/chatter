@@ -17,6 +17,11 @@ class ChatRoomsController < ApplicationController
     end
   end
 
+  def show
+    @chat_room = ChatRoom.includes(:public_messages).find_by(id: params[:id])
+    @public_message = PublicMessage.new
+  end
+
   private
 
   def chat_room_params
