@@ -60,9 +60,7 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-linkedin-oauth2'
-#gem 'twitter'
 gem 'omniauth-google-oauth2'
-#gem 'google-api-client', require: 'google/api_client'
 
 #wypelnienie bazy
 gem 'faker'
