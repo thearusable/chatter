@@ -1,0 +1,46 @@
+<div class="chatboxhead">
+  <div class="chatboxtitle">
+    <i class="fa fa-comments"></i>
+
+    <h1> <%= @chat_room.title %> </h1>
+  </div>
+  <div class="chatboxoptions">
+    <%= link_to "<i class='fa  fa-minus'></i> ".html_safe, "#", class: "toggleChatBox", "data-cid" => @chat_room.id %>
+    &nbsp;&nbsp;
+    <%= link_to "<i class='fa  fa-times'></i> ".html_safe, "#", class: "closeChat", "data-cid" => @chat_room.id %>
+  </div>
+  <br clear="all"/>
+</div>
+<!-- chat messages -->
+<div id="messages", class=" messages", data-chat-room-id="<%= @chat_room.id %>">
+<% if @chat_room.messages.any? %>
+<% @chat_room.messages.each do |message| %>
+
+<div class="card">
+  <div class="card-block">
+    <div class="row">
+      <div class="col-md-1">
+        <%= user_avatar message.user %>
+      </div>
+      <div class="col-md-11">
+        <p class="card-text">
+          <span class="text-muted"><%= message.user.name %> at <%= message.timestamp %> says</span><br>
+          <%= message.body %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <% end %>
+<% end %>
+</div>
+<!-- end chat messages -->
+
+<%= form_for @message, url: '#', remote: true, class: "chatbox-new-message" do |f| %>
+  <div class="form-group">
+    <%= f.text_area :body, class: 'form-control' %>
+  </div>
+
+  <%= f.submit "Post", class: 'btn btn-primary btn-lg' %>
+<% end %>

@@ -1,2 +1,0 @@
-module ChatterHelper
-end
