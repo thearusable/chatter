@@ -5,4 +5,11 @@ module ApplicationHelper
               opts
   end
 
+  def user_name
+    if user_signed_in? then
+      #soon name from Profile
+      current_user.email
+    end
+  end
+
 end
