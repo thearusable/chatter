@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     get '/users/auth/:provider/setup', :to => 'omniauth_callbacks#setup'
   end
   resources :chat_rooms, only: [:new, :create, :show, :index]
-  resource :users, :only => [:show]
+  #resource :users, :only => [:show]
 
   root 'chat_rooms#index'
 
