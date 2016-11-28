@@ -1,7 +1,9 @@
 <% @users.each_with_index do |user, index| %>
     <tr>
       <td><%= index +=1 %></td>
-      <td><%= user.created_at %></td>
+      <td><%= user.fullname %></td>
+      <td><%= user.nickname %></td>
+      <td><%= user_avatar(user) %></td>
       <td>
         <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation",
                     "data-sid" => current_user.id, "data-rip" => user.id %>

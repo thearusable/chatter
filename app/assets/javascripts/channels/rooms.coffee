@@ -24,7 +24,6 @@ jQuery(document).on 'turbolinks:load', ->
 
 
     $('#new_message').submit (e) ->
-      window.alert("lel")
       $this = $(this)
       textarea = $this.find('#message_body')
       if $.trim(textarea.val()).length > 1

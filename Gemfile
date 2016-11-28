@@ -34,6 +34,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   gem 'sqlite3'
+  gem 'dotenv-rails'
 end
 
 group :development do
@@ -48,5 +49,15 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'devise'
+#wyglad
 gem 'bootstrap', '~> 4.0.0.alpha5'
+
+#logowanie
+gem 'devise'
+#Omniauth
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+#gem 'twitter'
+gem 'omniauth-google-oauth2'
+#gem 'google-api-client', require: 'google/api_client'
