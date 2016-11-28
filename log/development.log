@@ -15425,3 +15425,5 @@ Processing by ChatRoomsController#index as HTML
 Completed 200 OK in 128ms (Views: 116.0ms | ActiveRecord: 1.1ms)
 
 
+[ActionCable] Finished "/cable/" [WebSocket] for 127.0.0.1 at 2016-11-28 16:23:25 +0100
+[ActionCable] ChatRoomsChannel stopped streaming from chat_rooms_7_channel
