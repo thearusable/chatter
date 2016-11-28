@@ -5,9 +5,9 @@ Rails.application.configure do
   config.cache_classes = true
 
   # action cable
-  config.action_cable.allowed_request_origins = [ 'https://evening-temple-55977.herokuapp.com', /http:\/\/evening-temple-55977.herokuapp.com.*/ ]
+  config.action_cable.allowed_request_origins = [ 'https://chatterrr.herokuapp.com', /http:\/\/chatterrr.herokuapp.com.*/ ]
 
-  config.action_cable.url = "wss://evening-temple-55977.herokuapp.com/cable"
+  config.action_cable.url = "wss://chatterrr.herokuapp.com/cable"
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
