@@ -1,9 +1,5 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
-  def linkedin
-    generic_callback( 'linkedin' )
-  end
-
   def facebook
     generic_callback( 'facebook' )
   end
