@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   resources :chat_rooms, only: [:new, :create, :show, :index]
   #resource :users, :only => [:show]
 
-  root 'chat_rooms#index'
+  #root 'chat_rooms#index'
+  root 'wellcome#index'
 
   mount ActionCable.server => '/cable'
 
