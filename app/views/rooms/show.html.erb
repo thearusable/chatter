@@ -1,0 +1,35 @@
+<div id="dummy" >
+<% @private = PrivateRoom.first %>
+<h1><%= @private.title %></h1>
+
+
+<div class="messages" data-room-id="<%= @private.id %>">
+  <%= render @private.messages %>
+</div>
+
+<%= form_for @message, url: '#' do |f| %>
+  <div class="form-group" data-room-id="<%= @private.id %>">
+    <p>Private</p>
+    <%= f.text_area :body, class: 'message_body' %>
+    <small class="text-muted">From 2 to 1000 characters</small>
+  </div>
+
+<% end %>
+</div>
+<% @public = PublicRoom.first %>
+<h1><%= @public.title %></h1>
+
+<div class="messages" data-room-id="<%= @public.id %>">
+  <%= render @public.messages %>
+</div>
+
+<%= form_for @message, url: '#' do |f| %>
+  <div class="form-group" data-room-id="<%= @public.id %>">
+    <p>Public</p>
+    <%= f.text_area :body, class: 'message_body' %>
+    <small class="text-muted">From 2 to 1000 characters</small>
+  </div>
+<% end %>
+
+
+<input type="button" value="Remove DUMMY" onclick="unsub(<%= @private.id %>)" />
