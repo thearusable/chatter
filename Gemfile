@@ -62,11 +62,8 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
-<<<<<<< HEAD
-=======
 #gem 'omniauth-linkedin-oauth2'
 #gem 'twitter'
->>>>>>> refs/remotes/origin/master
 gem 'omniauth-google-oauth2'
 
 #wypelnienie bazy
