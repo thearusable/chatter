@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Chatter</title>
+
+	<meta charset="utf-8">
+	<meta name="viewport"    content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author"      content="Sergey Pozhilov (GetTemplate.com)">
+
+	<!-- Bootstrap itself -->
+	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+	<!-- Custom styles -->
+  <%= stylesheet_link_tag 'magister/magister.css', media: 'all' %>
+  <%= stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css' %>
+  <%= stylesheet_link_tag '//fonts.googleapis.com/css?family=Wire+One' %>
+  <%= csrf_meta_tags %>
+
+	<!-- Fonts -->
+
+
+</head>
+
+<!-- use "theme-invert" class on bright backgrounds, also try "text-shadows" class -->
+<body class="theme">
+
+<nav class="mainmenu">
+	<div class="container">
+		<div class="dropdown">
+			<button type="button" class="navbar-toggle" data-toggle="dropdown"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+			<!-- <a data-toggle="dropdown" href="#">Dropdown trigger</a> -->
+			<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+        <% if current_user then %>
+          <li><%= link_to "Chat Rooms", public_rooms_path %></li>
+          <li role="separator" class="divider"></li>
+          <li><%= link_to "Edit Profile", edit_user_registration_path(:id => current_user.id) %></li>
+          <li> <%= link_to "Signout", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to "Sign in", public_rooms_path %></li>
+          <li role="separator" class="divider"></li>
+          <li><%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %></li>
+          <li><%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path %></li>
+          <li><%= link_to "Sign in with Twitter", user_twitter_omniauth_authorize_path %></li>
+        <% end %>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<!-- Main (Home) section -->
+<section class="section" id="head">
+	<div class="container">
+
+		<div class="row">
+			<div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 text-center">
+
+				<!-- Site Title, your name, HELLO msg, etc. -->
+				<h1 class="title">Chatter</h1>
+				<h2 class="subtitle">Free Communicator</h2>
+
+				<!-- Short introductory (optional) -->
+				<h3 class="tagline">
+					"Create your own world" - Alan Olak 2k16
+				</h3>
+
+				<!-- Nice place to describe your site in a sentence or two -->
+        <% if current_user then %>
+          <p><%= link_to "Wellcome back! "  , public_rooms_path, class: "btn btn-default btn-lg" %><p>
+        <% else %>
+          <p><%= link_to "Jump in", public_rooms_path, class: "btn btn-default btn-lg" %><p>
+        <%  end %>
+
+			</div> <!-- /col -->
+		</div> <!-- /row -->
+
+	</div>
+</section>
+
+
+<!-- Load js libs only when the page is loaded. -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+</body>
+</html>

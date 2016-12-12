@@ -1,0 +1,13 @@
+<h1><%= @room.title %></h1>
+
+<div class="messages pre-scrollable" data-room-id="<%= @room.id %>">
+  <%= render @room.messages %>
+</div>
+
+<%= form_for @message, url: '#' do |f| %>
+  <div class="form-group" data-room-id="<%= @room.id %>">
+    <p>Public</p>
+    <%= f.text_area :body, class: 'message_body' %>
+    <small class="text-muted">From 2 to 1000 characters</small>
+  </div>
+<% end %>
