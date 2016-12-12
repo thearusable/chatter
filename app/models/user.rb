@@ -1,4 +1,9 @@
+require "open-uri"
+
 class User < ApplicationRecord
+  has_attached_file :avatar, styles: { medium: "248x248>", thumb: "40x40>" }, default_url: "/images/:style/missing.png"
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
+
   enum orientation: [:hetero, :homo, :bi]
   enum sex: [:male, :female]
   # Include default devise modules. Others available are:
@@ -52,18 +57,24 @@ class User < ApplicationRecord
     email.split('@')[0]
   end
 
+  def nick_from_email
+    self.nickname = self.email.split('@').first
+    self.save!
+  end
+
   def update_profile(auth)
-    #sprawdzanie czy nie nadpisuje
-    self.fullname = auth.info.name
-    self.nickname = auth.info.nickname
-    self.image = auth.info.image
-    self.phone = auth.info.phone
-    self.urls = (auth.info.urls || "").to_json
+  #sprawdzanie czy nie nadpisuje
+    if self.nickname.nil? then self.nickname = auth.info.nickname end
+    if self.avatar.nil? then self.avatar = avatar_from_url(auth.info.image) end
     self.save
   end
 
   def completed_profile?
     self.nickname.present? && self.age.present? && self.sex.present? && self.orientation.present? && self.image.present?
+  end
+
+  def avatar_from_url(url)
+    open(url)
   end
 
 end
