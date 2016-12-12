@@ -13,7 +13,8 @@
  *= require_tree .
  *= require_self
  */
-@import "bootstrap.min";
+/*@import "bootstrap.min";*/
+@import "semantic-ui";
 @import "chat";
 
 #messages {

@@ -52,6 +52,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #wyglad
 gem 'bootstrap', '~> 4.0.0.alpha5'
+gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
+
+gem 'paperclip'
 
 #logowanie
 gem 'devise'
@@ -59,7 +62,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
-gem 'omniauth-linkedin-oauth2'
+#gem 'omniauth-linkedin-oauth2'
 #gem 'twitter'
 gem 'omniauth-google-oauth2'
 #gem 'google-api-client', require: 'google/api_client'

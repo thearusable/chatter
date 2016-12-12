@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   #  get 'fill_profile', to: 'registrations#fill_profile'
   #  put 'fill_profile', to: 'registrations#fill_profile'
   #end
-  #resource :users
+  resource :users
 
   resources :public_rooms, :controller => "rooms", :type => "PublicRoom", :type_path => "public"
   resources :private_rooms, :controller => "rooms", :type => "PrivateRoom", :type_path => "private"
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   #get '/users/update' => "users#update"
   #match 'update_profile' => redirect("users#update")
 
-  root 'rooms#index'
+  root 'users#index'
   #root 'wellcome#index'
 
   mount ActionCable.server => '/cable'
