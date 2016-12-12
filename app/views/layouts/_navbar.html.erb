@@ -1,31 +1,24 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to "Chatter", root_path, class:"navbar-brand" %>
+<nav class="ui borderless main menu fixed">
+  <div class="ui container">
+
+    <!-- left side -->
+    <div class="item">
+      <%= link_to "Chatter", root_path, class:"header item" %>
+      <%= link_to "Peoples", root_path, class: "item" %>
+      <%= link_to "Chat Rooms", public_rooms_path, class: "item" %>
     </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li><%= link_to "Peoples", root_path %></li>
-        <li class="active"><%= link_to "Chat Rooms", public_rooms_path %></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <% if user_signed_in? then %>
-        <li><%= link_to current_user.nickname, edit_user_registration_path(:id => current_user.id) %></li>
-        <li><%= link_to "Edit Profile", edit_user_registration_path(:id => current_user.id) %></li>
-        <li> <%= link_to "Signout", destroy_user_session_path, method: :delete %></li>
-        <% else %>
-        <li><%= link_to "Log In", new_user_session_path %></li>
-        <% end %>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+    <!-- riight side -->
+    <div class=" right item">
+      <% if user_signed_in? then %>
+        <%= link_to current_user.nickname, edit_user_registration_path(:id => current_user.id), class:"header item" %>
+        <%= link_to "Edit Profile", edit_user_registration_path(:id => current_user.id), class: "item" %>
+        <%= link_to "Signout", destroy_user_session_path, method: :delete, class: "item" %>
+      <% else %>
+        <%= link_to "Log In", new_user_session_path, class: "item" %>
+        <%= link_to "Sign Un", new_user_registration_path, class: "item" %>
+      <% end %>
+    </div>
+
+  </div>
 </nav>
