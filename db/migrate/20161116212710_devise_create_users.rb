@@ -31,11 +31,11 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       # t.datetime :locked_at
 
       #Profile Data
-      t.string :fullname
       t.string :nickname
+      t.integer :age
+      t.integer :sex
+      t.integer :orientation
       t.string :image
-      t.string :phone
-      t.string :urls
 
 
       t.timestamps null: false

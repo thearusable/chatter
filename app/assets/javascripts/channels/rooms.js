@@ -2,6 +2,7 @@ jQuery(document).on('turbolinks:load', function() {
 
   var allChats = document.getElementsByClassName('messages');
   for (var i = 0; i < allChats.length; i++) {
+    messages_to_bottom(allChats[0])
     var founded = false
     for(sub of App.cable.subscriptions.subscriptions){
       if(allChats[i].getAttribute("data-room-id") == ( JSON && JSON.parse(sub.identifier) || $.parseJSON(sub.identifier) ).room_id){
@@ -24,9 +25,9 @@ jQuery(document).on('turbolinks:load', function() {
           for(var i = 0; i < message_boxes.length; i++){
             if (message_boxes[i].getAttribute("data-room-id") === id) {
               message_boxes[i].innerHTML += data['message'];
+              messages_to_bottom(message_boxes[i]);
             }
           }
-          //return messages_to_bottom();
         },
         send_message: function(message, room_id) {
           return this.perform('send_message', {
@@ -66,6 +67,10 @@ function unsub(room_id) {
       }
     }
     return false;
+}
+
+function messages_to_bottom(element){
+    element.scrollTop = element.scrollHeight;
 }
 
 /*

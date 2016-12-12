@@ -14,4 +14,9 @@ class RegistrationsController < Devise::RegistrationsController
       resource.update_with_password(params)
     end
   end
+
+  def fill_profile
+    @resource = current_user
+  end
+
 end

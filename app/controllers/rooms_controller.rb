@@ -12,7 +12,7 @@ class RoomsController < ApplicationController
     @room = current_user.rooms.build(room_params)
     if @room.save
       flash[:success] = 'room added!'
-      redirect_to root_path
+      redirect_to public_room_path(@room)
     else
       render 'new'
     end

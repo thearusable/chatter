@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  enum orientation: [:hetero, :homo, :bi]
+  enum sex: [:male, :female]
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :omniauthable, :database_authenticatable, :registerable,
@@ -58,6 +60,10 @@ class User < ApplicationRecord
     self.phone = auth.info.phone
     self.urls = (auth.info.urls || "").to_json
     self.save
+  end
+
+  def completed_profile?
+    self.nickname.present? && self.age.present? && self.sex.present? && self.orientation.present? && self.image.present?
   end
 
 end
