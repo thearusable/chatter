@@ -2,7 +2,11 @@
 
       <% @users.each do |user| %>
         <div class="ui fluid card">
-            <a class="image" href="#"> <%= image_tag user.avatar.url(:medium) %></a>
+            <a class="image" href="#">
+
+                <%= image_tag user.avatar.url(:medium) %>
+            
+            </a>
             <div class="content">
               <a class="header" href="#"><%= user.nickname %></a>
               <div class="meta">

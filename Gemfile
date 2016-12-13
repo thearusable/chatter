@@ -55,6 +55,7 @@ gem 'bootstrap', '~> 4.0.0.alpha5'
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 
 gem 'paperclip'
+gem 'aws-sdk', '~> 2.3'
 
 #logowanie
 gem 'devise'
@@ -65,7 +66,6 @@ gem 'omniauth-facebook'
 #gem 'omniauth-linkedin-oauth2'
 #gem 'twitter'
 gem 'omniauth-google-oauth2'
-#gem 'google-api-client', require: 'google/api_client'
 
 #wypelnienie bazy
 gem 'faker'
