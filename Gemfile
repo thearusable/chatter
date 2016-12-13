@@ -55,6 +55,7 @@ gem 'bootstrap', '~> 4.0.0.alpha5'
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 
 gem 'paperclip'
+gem 'aws-sdk', '~> 2.3'
 
 #logowanie
 gem 'devise'

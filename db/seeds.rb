@@ -1,5 +1,5 @@
 #how many
-UsersCount = 40
+UsersCount = 50
 MessagesInRoomsCount = 500
 
 def image_male
