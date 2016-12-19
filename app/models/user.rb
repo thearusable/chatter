@@ -1,10 +1,5 @@
-require "open-uri"
-
 class User < ApplicationRecord
-  has_attached_file :avatar,
-    styles: { medium: "248x248>", thumb: "40x40>" },
-    path: "/images/:class/:id/:style/:filename",
-    default_url: "/images/default/missing_:style.png"
+  has_attached_file :avatar, styles: { medium: "248x248>", thumb: "40x40>" }
 
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
@@ -15,7 +10,6 @@ class User < ApplicationRecord
   devise :omniauthable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable
 
-  has_many :chat_rooms, dependent: :destroy
   has_many :rooms, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :identities
@@ -56,11 +50,6 @@ class User < ApplicationRecord
     @google_oauth2_client
   end
 
-
-  def name
-    email.split('@')[0]
-  end
-
   def nick_from_email
     self.nickname = self.email.split('@').first
     self.save!
@@ -69,16 +58,12 @@ class User < ApplicationRecord
   def update_profile(auth)
   #sprawdzanie czy nie nadpisuje
     if self.nickname.nil? then self.nickname = auth.info.nickname end
-    if self.avatar.nil? then self.avatar = avatar_from_url(auth.info.image) end
+    if self.avatar.exists? then self.avatar = auth.info.image end
     self.save
   end
 
   def completed_profile?
     self.nickname.present? && self.age.present? && self.sex.present? && self.orientation.present? && self.image.present?
-  end
-
-  def avatar_from_url(url)
-    open(url)
   end
 
 end

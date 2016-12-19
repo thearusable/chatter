@@ -8,4 +8,15 @@ module ApplicationHelper
 
     info
   end
+
+  def user_avatar(user, size)
+    if user.avatar.exists? then
+      user.avatar.url(size)
+    else
+      user.avatar = nil
+      user.save
+
+      user.avatar.url(size)
+    end
+  end
 end
