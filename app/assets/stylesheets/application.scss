@@ -13,7 +13,6 @@
  *= require_tree .
  *= require_self
  */
-/*@import "bootstrap.min";*/
 @import "semantic-ui";
 @import "chat";
 
@@ -26,19 +25,19 @@
 }
 
 body {
-  padding-top: 72px;
-  background:transparent;
+  margin-top: 72px;
   min-height: 100%;
+
+  background:transparent;
   -webkit-font-smoothing: antialiased;
   -webkit-overflow-scrolling: touch;
 }
 
 .container{
   min-height: 100%;
-  margin-top: 0px;
   background-color: rgba(255,255,255,.9);
 }
 
-.container-stuff{
-  padding-top: 20px;
+.acontainer{
+  padding: 15px;
 }

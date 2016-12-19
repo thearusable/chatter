@@ -9,7 +9,10 @@ Rails.application.configure do
     secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY'),
     s3_region: ENV.fetch('AWS_REGION'),
     s3_host_name: "s3-#{ENV['AWS_REGION']}.amazonaws.com",
-    }
+    },
+    path: "/images/:class/:id/:style_:filename",
+    url: "s3-#{ENV['AWS_REGION']}.amazonaws.com/#{ENV['S3_BUCKET_NAME']}/",
+    default_url: "https://s3-#{ENV['AWS_REGION']}.amazonaws.com/#{ENV['S3_BUCKET_NAME']}/images/missing/:class_:style.png"
   }
 
   # Code is not reloaded between requests.
