@@ -67,3 +67,6 @@ gem 'faker'
 
 #paginacja i doczytywanie
 gem 'will_paginate'
+#json
+gem 'rabl'
+gem 'oj'

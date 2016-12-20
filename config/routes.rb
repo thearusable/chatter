@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   #get '/users/update' => "users#update"
   #match 'update_profile' => redirect("users#update")
 
+
+  get "autocomplete" => "search#autocomplete"
+
   root 'users#index'
   #root 'wellcome#index'
 

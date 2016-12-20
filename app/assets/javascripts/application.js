@@ -16,3 +16,44 @@
 //= require cable
 //= require semantic-ui
 //= require_tree .
+
+$(document).ready(function () {
+
+      $('.search').search({
+        type: 'category',
+        minCharacters: 2,
+        apiSettings: {
+          onResponse: function(chatterResponse) {
+            var
+              response = {
+                results: {}
+              };
+            //translate response
+            $.each(chatterResponse, function(resultIndex, item){
+              $.each(item, function(index,item){
+                if(index >= 7){
+                  return false;
+                }
+                //create new category
+                if(response.results[resultIndex] === undefined){
+                  response.results[resultIndex] = {
+                    name: resultIndex.toUpperCase(),
+                    results: []
+                  };
+                }
+                //add result to category
+                response.results[resultIndex].results.push({
+                  title: item.name,
+                  description: item.desc,
+                  //image: item.img
+                });
+              });
+            });
+            return response;
+          },
+          url: 'http://' + window.location.host + '/autocomplete.json?query={query}'
+        },
+        debug: true,
+        verbose: true
+      });
+});
