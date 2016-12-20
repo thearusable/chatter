@@ -3,8 +3,6 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
-# Use sqlite3 as the database for Active Record
-# gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma'
 # Use SCSS for stylesheets
@@ -44,28 +42,28 @@ end
 
 group :production do
   gem 'pg'
-  gem 'redis'
+  #gem 'redis' - chyba usunołem
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #wyglad
-gem 'bootstrap', '~> 4.0.0.alpha5'
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 
+#zdjecia i ich hosting na amazonie
 gem 'paperclip'
 gem 'aws-sdk', '~> 2.3'
 
 #logowanie
 gem 'devise'
-#Omniauth
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
-#gem 'omniauth-linkedin-oauth2'
-#gem 'twitter'
 gem 'omniauth-google-oauth2'
 
 #wypelnienie bazy
 gem 'faker'
+
+#paginacja i doczytywanie
+gem 'will_paginate'

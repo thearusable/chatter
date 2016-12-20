@@ -8,6 +8,16 @@
       <%= link_to "Rooms", public_rooms_path, class: "item" %>
     </div>
 
+    <div class="item ui category search">
+      <div class="ui icon input">
+        <input class="prompt" type="text" placeholder="Search...">
+        <i class="search icon"></i>
+      </div>
+      <div class="results">
+
+      </div>
+    </div>
+
     <!-- riight side -->
     <div class=" right item">
       <% if user_signed_in? then %>
