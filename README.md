@@ -1,24 +1,6 @@
-# README
+# Messaging app - Ruby on Rails 5
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Web application to easily communicate with unknown people.
+Application allows you to send private messages, and attach to public chat rooms.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+[Live version](https://chatterrr.herokuapp.com/)
