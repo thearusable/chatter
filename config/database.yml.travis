@@ -1,0 +1,4 @@
+test:
+  adapter: postgresql
+  database: chatter_test
+  username: postgres

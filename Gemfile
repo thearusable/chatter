@@ -31,7 +31,7 @@ gem 'jbuilder', '~> 2.5'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
-  gem 'sqlite3'
+
   gem 'dotenv-rails'
   gem 'factory_girl_rails'
   gem 'rspec-rails'
@@ -40,6 +40,7 @@ end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
+  gem 'sqlite3'
   gem 'better_errors'
   gem 'html2haml'
   gem 'hub', require: nil
@@ -54,6 +55,7 @@ group :test do
   gem 'launchy'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers', require: false
+  gem 'pg'
 end
 
 group :production do

@@ -5,9 +5,12 @@ env:
   global:
     - RAILS_ENV=test
 services:
-  - sqlite3
+  - postgresql
 script:
   - bundle exec rake db:schema:load --trace
   - bundle exec rspec
 before_script:
   - cp config/database.yml.travis config/database.yml
+  - psql -c 'create database chatter_test;' -U postgres
+addons:
+  postgresql: '9.3'

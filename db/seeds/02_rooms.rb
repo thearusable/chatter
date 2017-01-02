@@ -1,13 +1,10 @@
-PublicRoom.create!(title: "Podroze", user_id: 1)
-PublicRoom.create!(title: "Sport", user_id: 1)
-PublicRoom.create!(title: "Polityka", user_id: 1)
-PublicRoom.create!(title: "Muzyka", user_id: 1)
-PublicRoom.create!(title: "Gry", user_id: 1)
-PublicRoom.create!(title: "Technologia", user_id: 1)
-PublicRoom.create!(title: "Nauka", user_id: 1)
-PublicRoom.create!(title: "Kultura", user_id: 1)
-PublicRoom.create!(title: "Rozne", user_id: 1)
-PublicRoom.create!(title: "Nowe Osoby", user_id: 1)
-PublicRoom.create!(title: "Gadzety", user_id: 1)
-PublicRoom.create!(title: "Fantastyka", user_id: 1)
-PublicRoom.create!(title: "Astronomia", user_id: 1)
+
+50.times do
+  PublicRoom.create!(
+    title: Faker::Name.title,
+    category: Faker::Lorem.word,
+    description: Faker::Lorem.paragraph,
+    owner_id: User.all.sample.id,
+    users_count: 90
+    )
+end
