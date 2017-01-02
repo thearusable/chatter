@@ -17,8 +17,8 @@
 //= require semantic-ui
 //= require_tree .
 
-$(document).ready(function () {
-
+Search = function() {
+      console.log("lelel");
       $('.search').search({
         type: 'category',
         minCharacters: 2,
@@ -56,4 +56,7 @@ $(document).ready(function () {
         debug: true,
         verbose: true
       });
-});
+}
+
+$(document).ready(Search);
+$(document).on('page:change', Search);

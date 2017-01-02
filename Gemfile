@@ -33,11 +33,27 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'sqlite3'
   gem 'dotenv-rails'
+  gem 'factory_girl_rails'
+  gem 'rspec-rails'
+  gem 'spring'
 end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'web-console'
+  gem 'better_errors'
+  gem 'html2haml'
+  gem 'hub', require: nil
+  gem 'rails_layout'
+  gem 'spring-commands-rspec'
+  gem 'web-console', '~> 2.0'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'launchy'
+  gem 'selenium-webdriver'
+  gem 'shoulda-matchers', require: false
 end
 
 group :production do

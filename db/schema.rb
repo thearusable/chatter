@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 5) do
+ActiveRecord::Schema.define(version: 6) do
 
   create_table "identities", force: :cascade do |t|
     t.integer  "user_id"
@@ -37,10 +37,17 @@ ActiveRecord::Schema.define(version: 5) do
   create_table "rooms", force: :cascade do |t|
     t.string   "type"
     t.string   "title"
-    t.string   "body"
+    t.string   "description"
+    t.string   "category"
+    t.integer  "owner_id"
+    t.integer  "users_count"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
     t.index ["user_id"], name: "index_rooms_on_user_id"
   end
 

@@ -10,9 +10,9 @@ class User < ApplicationRecord
   devise :omniauthable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable
 
-  has_many :rooms, dependent: :destroy
+  has_many :rooms, through: :conversations, dependent: :destroy
   has_many :messages, dependent: :destroy
-  has_many :identities
+  has_many :identities, dependent: :destroy
 
   def twitter
     identities.where( :provider => "twitter" ).first
