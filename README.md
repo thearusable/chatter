@@ -1,7 +1,5 @@
 [![Build Status](https://travis-ci.org/thearusable/chatter.svg?branch=master)](https://travis-ci.org/thearusable/chatter)
 
-# README
-=======
 # Messaging app - Ruby on Rails 5
 
 Web application to easily communicate with unknown people.
