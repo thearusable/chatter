@@ -1,13 +1,14 @@
 source 'https://rubygems.org'
 
-gem 'rails'
+gem 'rails', '>= 5.0.1'
 gem 'puma'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.2'
+gem 'sass-rails'
+gem 'uglifier'
+gem 'coffee-rails'
 gem 'jquery-rails'
-gem 'turbolinks', '~> 5'
-gem 'jbuilder', '~> 2.5'
+gem 'turbolinks'
+gem 'jbuilder'
+gem 'pg'
 
 group :development, :test do
   gem 'byebug', platform: :mri
@@ -18,7 +19,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'sqlite3'
   gem 'better_errors'
   gem 'html2haml'
   gem 'hub', require: nil
@@ -33,12 +33,10 @@ group :test do
   gem 'launchy'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers', require: false
-  gem 'pg'
 end
 
 group :production do
-  gem 'pg'
-  gem 'rails_12factor'
+  #gem 'rails_12factor'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
