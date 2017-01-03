@@ -17,7 +17,7 @@
 //= require semantic-ui
 //= require_tree .
 
-Search = function() {
+var Search = function() {
       console.log("lelel");
       $('.search').search({
         type: 'category',
@@ -51,7 +51,7 @@ Search = function() {
             });
             return response;
           },
-          url: 'http://' + window.location.host + '/autocomplete.json?query={query}'
+          url: 'https://' + window.location.host + '/autocomplete.json?query={query}'
         },
         debug: true,
         verbose: true
