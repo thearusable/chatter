@@ -17,9 +17,10 @@ Rails.application.configure do
 
   # Code is not reloaded between requests.
   config.cache_classes = true
-  config.serve_static_assets = true
+  config.public_file_server.enabled = true
   config.assets.compile = true
   config.assets.digest = true
+  config.assets.compress = true
 
   # action cable
   config.action_cable.allowed_request_origins = [ 'https://chatterrr.herokuapp.com', /http:\/\/chatterrr.herokuapp.com.*/ ]
@@ -38,7 +39,7 @@ Rails.application.configure do
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
-  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+  # config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
   # Compress JavaScripts and CSS.
   # config.assets.js_compressor = :uglifier
