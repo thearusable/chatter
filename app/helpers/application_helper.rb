@@ -19,4 +19,5 @@ module ApplicationHelper
       user.avatar.url(size)
     end
   end
+
 end

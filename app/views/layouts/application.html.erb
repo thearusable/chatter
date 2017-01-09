@@ -18,35 +18,31 @@
 </head>
 
 <body>
+<!-- sidebars -->
+<% if current_user %>
+  <%= render 'layouts/sidebar' %>
+<% end %>
 
+<!-- navbar -->
 <%= render 'layouts/navbar' %>
 
+<!-- content of site -->
+<div class="pusher">
 
 <div class="ui main container">
   <div class="acontainer">
     <%= yield %>
   </div>
-  <div class="bottom right">
-  <button class="show-all-messages"></button>
-  </div>
+  <% if current_user %>
+    <div id="historybutton" class="white circular ui icon button">
+      <i class="icon comments"></i>
+    </div>
+  <% end %>
 </div>
 
 <!-- chatboxes -->
 
 
 
-
-
-<div class="ui right sidebar vertical menu">
-    <a class="item">
-      1
-    </a>
-    <a class="item">
-      2
-    </a>
-    <a class="item">
-      3
-    </a>
-  </div>
-
+</div>
 </body>

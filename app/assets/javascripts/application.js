@@ -17,9 +17,14 @@
 //= require semantic-ui
 //= require_tree .
 
-var Search = function() {
-      console.log("lelel");
-      $('.search').search({
+
+jQuery(document).on('turbolinks:load', function() {
+
+  $('#historybutton').click(function(event){
+    $('.ui.right.sidebar').sidebar('toggle');
+  });
+
+  $('.search').search({
         type: 'category',
         minCharacters: 2,
         apiSettings: {
@@ -45,18 +50,15 @@ var Search = function() {
                 response.results[resultIndex].results.push({
                   title: item.name,
                   description: item.desc,
-                  //image: item.img
                 });
               });
             });
             return response;
           },
-          url: 'https://' + window.location.host + '/autocomplete.json?query={query}'
+          url: window.location.origin + '/autocomplete.json?query={query}'
         },
         debug: true,
         verbose: true
       });
-}
 
-$(document).ready(Search);
-$(document).on('page:change', Search);
+})

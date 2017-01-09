@@ -8,7 +8,25 @@ class UsersController < ApplicationController
     end
   end
 
-  def update
+  def edit
     @user = current_user
   end
+
+  def update
+    @user = current_user
+    if @user.update_attributes(user_params)
+      flash[:success] = "Account updated."
+      render 'edit'
+    else
+      flash[:success] = "Shit."
+      render 'edit'
+    end
+  end
+
+  private
+
+    def user_params
+      params.require(:user).permit(:nickname, :email, :password,
+                                   :password_confirmation, :age, :sex, :orientation, :avatar)
+    end
 end

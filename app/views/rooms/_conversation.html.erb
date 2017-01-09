@@ -1,0 +1,9 @@
+<% @conversations.each do |conversation| %>
+    <div class="item">
+    <i class="large comments middle aligned icon"></i>
+    <div class="content">
+      <%= link_to conversation.room_name(current_user), polymorphic_path(conversation), class: "header" %>
+      <div class="description"><%= conversation.last_message %></div>
+    </div>
+  </div>
+<% end %>

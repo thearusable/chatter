@@ -1,15 +1,20 @@
 class RoomsController < ApplicationController
   def index
-    @rooms = Room.all#where(:type => params[:type])
+    @rooms = PublicRoom.paginate(page: params[:page], per_page: 20).order('created_at DESC')
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new
-    @room = Room.new
-    @room.type = params[:type]
+    @room = PublicRoom.new
   end
 
   def create
     @room = current_user.rooms.build(room_params)
+    @room.type = params[:type]
+    @room.owner_id = current_user.id
     if @room.save
       flash[:success] = 'room added!'
       redirect_to public_room_path(@room)
@@ -26,6 +31,6 @@ class RoomsController < ApplicationController
   private
 
   def room_params
-    params.require(:room).permit(:title)
+    params.require(:public_room).permit(:title, :category, :description, :owner_id)
   end
 end

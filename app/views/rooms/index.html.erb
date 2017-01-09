@@ -1,11 +1,29 @@
-<h1>Chat rooms</h1>
+<div class="ui four column doubling stackable grid cards" id="rooms-list">
+  <div class="ui card">
+    <div class="content">
+      <div class="header">Create chat room</div>
+    </div>
+    <div class="content">
+      <h4 class="ui sub header">No subject restrictions</h4>
+      <div class="ui small feed">
+        <div class="event">
+          <div class="content">
+            <div class="summary">
+               <a>You</a> can talk about <a>anything</a>.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="extra content">
+      <%= button_to 'Create public chat room', new_public_room_path, class: 'ui button', method: :get %>
+    </div>
+  </div>
 
-<p class="lead"><%= link_to 'New public room', new_public_room_path, class: 'btn btn-primary' %></p>
+  <%= render @rooms %>
+</div>
 
-<ul>
-  <% if @rooms then %>
-    <% @rooms.each do |room| %>
-      <li><%= link_to "Enter base: #{room.title}", public_room_path(room) %></li>
-    <% end %>
-  <% end %>
-</ul>
+
+<div id="infinite-scrolling">
+  <%= will_paginate %>
+</div>

@@ -1,29 +1,80 @@
-<h2>Sign up</h2>
+<div class="ui raised segment container">
+  <h2 class="ui header">Sing up.</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "ui form"}) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+  <div class="ui segment">
+    <% if resource.avatar.exists? %>
+      <%= image_tag resource.avatar.url(:medium) %><br/>
+    <% end %>
+    <div class="field">
+      <%= f.label :avatar %>
+      <%= f.file_field :avatar %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+  <div class="ui segment">
+    <div class="three fields">
+      <div class="field">
+        <%= f.label :age %><br />
+        <%= f.select :age, (1..100) %>
+      </div>
+
+      <div class="field">
+        <%= f.label :sex %><br />
+        <%= f.select :sex, User.sexes.keys.to_a %>
+      </div>
+
+      <div class="field">
+        <%= f.label :orientation %><br />
+        <%= f.select :orientation, User.orientations.keys.to_a %>
+      </div>
+    </div>
+
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+  <div class="ui segment">
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+    <div class="two fields">
+      <div class="required field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email %>
+      </div>
+
+      <div class="required field">
+        <%= f.label :nickname %><br />
+        <%= f.text_field :nickname %>
+      </div>
+    </div>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+
+    <div class="two fields">
+      <div class="required field">
+        <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+        <%= f.password_field :password %>
+        <% if @minimum_password_length %>
+          <br />
+          <em><%= @minimum_password_length %> characters minimum</em>
+        <% end %>
+      </div>
+
+      <div class="required field">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation %>
+      </div>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Sign up", class: 'ui submit button' %>
+    </div>
+
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+</div>

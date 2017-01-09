@@ -1,5 +1,7 @@
 #how many
-UsersCount = 50
+UsersCount = 5
+PublicRoomsCount = 50
+PrivateRoomsCount = 50
 MessagesInRoomsCount = 500
 
 s3 = Aws::S3::Client.new

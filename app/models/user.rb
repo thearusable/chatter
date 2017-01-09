@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_attached_file :avatar, styles: { medium: "248x248>", thumb: "40x40>" }
+  has_attached_file :avatar, styles: { medium: "248x248#", thumb: "35x35#" }
 
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
@@ -10,7 +10,9 @@ class User < ApplicationRecord
   devise :omniauthable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable
 
-  has_many :rooms, through: :conversations, dependent: :destroy
+  has_many :conversations
+  has_many :rooms, through: :conversations
+
   has_many :messages, dependent: :destroy
   has_many :identities, dependent: :destroy
 

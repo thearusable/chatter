@@ -21,8 +21,8 @@
     <!-- riight side -->
     <div class=" right item">
       <% if user_signed_in? then %>
-        <%= link_to current_user.nickname, edit_user_registration_path(:id => current_user.id), class:"header item" %>
-        <%= link_to "Edit Profile", edit_user_registration_path(:id => current_user.id), class: "item" %>
+        <%= link_to current_user.nickname, edit_user_registration_path, class:"header item" %>
+        <%= link_to "Edit Profile", edit_user_registration_path, class: "item" %>
         <%= link_to "Signout", destroy_user_session_path, method: :delete, class: "item" %>
       <% else %>
         <%= link_to "Log In", new_user_session_path, class: "item" %>

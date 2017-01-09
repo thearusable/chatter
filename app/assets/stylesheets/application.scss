@@ -14,15 +14,7 @@
  *= require_self
  */
 @import "semantic-ui";
-@import "chat";
-
-#messages {
-  max-height: 450px;
-  overflow-y: auto;
-  .avatar {
-    margin: 0.5rem;
-  }
-}
+@import "chatbox";
 
 body {
   margin-top: 72px;
@@ -49,4 +41,28 @@ html {
      -moz-background-size: cover;
        -o-background-size: cover;
           background-size: cover;
+}
+
+body.pushable>.pusher {
+  background: url(body.jpg) no-repeat center center fixed;
+}
+
+#historybutton {
+  position: fixed;
+  bottom: 15px;
+  right: 20px;
+}
+
+.ui.comments .comment img.avatar,
+.ui.comments .comment .avatar img {
+  display: block;
+  margin: 0em auto;
+  width: 100%;
+  height: auto; // 100% doesn't work but auto does
+}
+
+.ui.comments{
+  max-height: 60%;
+  max-width: 100%;
+  overflow-y: auto;
 }

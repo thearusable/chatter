@@ -1,3 +1,5 @@
+User.create!(email: "testowy@testowy.com", nickname: "Testowy User", password: "testowy", password_confirmation: "testowy")
+
 UsersCount.times do |n|
     nick = Faker::Internet.user_name
     pass = Faker::Internet.password
@@ -5,7 +7,7 @@ UsersCount.times do |n|
     orient = if [true, false].sample then rand(0..2) else nil end
     age = if [true, false].sample then  rand(18..29) else nil end
 
-    User.create(
+    User.create!(
       email: nick + n.to_s + "@example.com",
       nickname: nick,
       age: age,

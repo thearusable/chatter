@@ -36,7 +36,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.integer :sex
       t.integer :orientation
 
-
       t.timestamps null: false
     end
 

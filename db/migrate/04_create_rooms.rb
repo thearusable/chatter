@@ -6,9 +6,6 @@ class CreateRooms < ActiveRecord::Migration[5.0]
       t.string :description
       t.string :category
       t.integer :owner_id
-      t.integer :users_count
-
-      t.references :user, foreign_key: true
 
       t.timestamps
     end

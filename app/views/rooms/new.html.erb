@@ -1,10 +1,24 @@
-<h1>Add room</h1>
+<div class="ui raised segment container">
+  <h2 class="ui header">Create your own public room.</h2>
 
-<%= form_for ([params[:type_path], @room]) do |f| %>
-  <div class="form-group">
-    <%= f.label :title %>
-    <%= f.text_field :title, autofocus: true, class: 'form-control' %>
-  </div>
+    <%= form_for @room, html: {class: "ui form"} do |f| %>
 
-  <%= f.submit "Add!", class: 'btn btn-primary' %>
-<% end %>
+        <div class="required field">
+          <%= f.label :title %>
+          <%= f.text_field :title, autofocus: true, placeholder: "Title" %>
+        </div>
+
+        <div class="required field">
+          <%= f.label :category %>
+          <%= f.text_field :category, placeholder: "Category" %>
+        </div>
+
+        <div class="required field">
+          <%= f.label :description %>
+          <%= f.text_area :description, placeholder: "Description" %>
+        </div>
+
+      <%= f.submit "Add!", class: 'ui submit button' %>
+    <% end %>
+
+</div>
