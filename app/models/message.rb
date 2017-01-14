@@ -1,9 +1,11 @@
 class Message < ApplicationRecord
   belongs_to :user
-  belongs_to :room
 
-  validates :user_id, :room_id, presence: true
+  belongs_to :messagable, polymorphic: true
+
+  validates :user_id, presence: true
   validates :body, presence: true, length: {minimum: 2, maximum: 1000}
+
   after_create_commit { MessageBroadcastJob.perform_later(self) }
 
   def timestamp

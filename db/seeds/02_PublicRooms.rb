@@ -1,9 +1,8 @@
 
 PublicRoomsCount.times do
-  PublicRoom.create!(
+  Room.create!(
     title: Faker::Name.title,
     category: Faker::Lorem.word,
-    description: Faker::Lorem.paragraph,
-    owner_id: User.all.sample.id
+    description: Faker::Lorem.paragraph
     )
 end

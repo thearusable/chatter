@@ -1,11 +1,12 @@
-<div class="ui fluid card">
-    <a class="image" href="#">
-        <%= image_tag user_avatar(user, :medium), :class => "start-conversation" %>
-    </a>
-    <div class="content">
-      <a class="header" href="#"><%= user.nickname %></a>
-      <div class="meta">
-        <a><%= user_info(user) %></a>
+  <div class="ui fluid card">
+      <a class="image" href="#">
+         <%= image_tag user_avatar(user, :medium) %>
+      </a>
+      <div class="content">
+        <%= link_to user.nickname, conversations_path(sender_id: current_user.id, recipient_id: user.id), class: "header start-conversation", method: :post %>
+        <div class="meta">
+          <a><%= user_info(user) %></a>
+        </div>
       </div>
-    </div>
-</div>
+  </div>
+

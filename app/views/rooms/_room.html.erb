@@ -1,0 +1,9 @@
+<div class="ui card">
+  <div class="content">
+    <div class="header"><%= link_to room.title, room_path(room) %></div>
+    <div class="meta">
+      <span><%= room.users.count %> users.</span>
+    </div>
+      <p><%= room.description %></p>
+  </div>
+</div>

@@ -1,0 +1,2 @@
+module PrivateRoomHelper
+end

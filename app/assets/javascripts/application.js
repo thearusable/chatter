@@ -61,4 +61,9 @@ jQuery(document).on('turbolinks:load', function() {
         verbose: true
       });
 
+
+  $(".start-conversation").click(function(){
+    console.log(this);
+  })
+
 })

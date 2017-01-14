@@ -1,5 +1,7 @@
 jQuery(document).on('turbolinks:load', function() {
 
+  var senderID = $('meta[name=current-user-id]').attr('content');
+  console.log(senderID);
   var allChats = document.getElementsByClassName('messages');
   for (var i = 0; i < allChats.length; i++) {
     messages_to_bottom(allChats[0])
@@ -16,10 +18,12 @@ jQuery(document).on('turbolinks:load', function() {
         channel: "RoomsChannel",
         room_id: allChats[i].getAttribute("data-room-id")
       }, {
-        connected: function() {},
-        disconnected: function() {},
+        connected: function() {
+        },
+        disconnected: function() {
+        },
         received: function(data) {
-          console.log(data)
+          console.log(data);
           var message_boxes = $('.messages')
           id = ( JSON && JSON.parse(this.identifier) || $.parseJSON(this.identifier) ).room_id;
           for(var i = 0; i < message_boxes.length; i++){
@@ -32,7 +36,8 @@ jQuery(document).on('turbolinks:load', function() {
         send_message: function(message, room_id) {
           return this.perform('send_message', {
             message: message,
-            room_id: room_id
+            room_id: room_id,
+            sender_id: senderID
           });
         }
       });

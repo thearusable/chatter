@@ -1,8 +1,7 @@
 PrivateRoomsCount.times do
-  p = PrivateRoom.create!
+  p = Conversation.create!
 
-  2.times do
-    p.users << User.all.sample
-  end
+  p.sender_id = User.all.sample.id
+  p.recipient_id = User.all.sample.id
 
 end

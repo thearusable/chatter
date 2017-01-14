@@ -1,9 +1,21 @@
 <% @conversations.each do |conversation| %>
     <div class="item">
-    <i class="large comments middle aligned icon"></i>
+    <% if conversation.type == "PublicRoom" %>
+      <div class="ui image">
+        <i class="large comments outline icon"></i>
+      </div>
+
+    <% else %>
+
+      <div class="ui mini circular image">
+        <%= image_tag conversation.room_avatar(current_user).url(:thumb) %>
+      </div>
+
+    <%end %>
     <div class="content">
       <%= link_to conversation.room_name(current_user), polymorphic_path(conversation), class: "header" %>
       <div class="description"><%= conversation.last_message %></div>
     </div>
   </div>
+  <%= link_to "xx", find_or_create_path(cuid: current_user.id, uid: conversation.users.first.id), class: "header" %>
 <% end %>

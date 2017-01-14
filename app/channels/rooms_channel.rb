@@ -8,6 +8,6 @@ class RoomsChannel < ApplicationCable::Channel
   end
 
   def send_message(data)
-    current_user.messages.create!(body: data['message'], room_id: data['room_id'])
+    Room.find(data['room_id']).messages.create!(body: data['message'], user_id: data['sender_id'])
   end
 end

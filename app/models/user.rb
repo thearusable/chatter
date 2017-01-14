@@ -5,14 +5,16 @@ class User < ApplicationRecord
 
   enum orientation: [:hetero, :homo, :bi]
   enum sex: [:male, :female]
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+
   devise :omniauthable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable
 
-  has_many :conversations
-  has_many :rooms, through: :conversations
+  has_many :user_rooms
+  has_many :rooms, through: :user_rooms
 
+  has_many :conversations, :foreign_key => :sender_id
+
+  #has_many :messages
   has_many :messages, dependent: :destroy
   has_many :identities, dependent: :destroy
 

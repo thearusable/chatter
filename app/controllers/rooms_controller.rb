@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
   def index
-    @rooms = PublicRoom.paginate(page: params[:page], per_page: 20).order('created_at DESC')
+    @rooms = Room.paginate(page: params[:page], per_page: 20).order('created_at DESC')
     respond_to do |format|
       format.html
       format.js
@@ -8,16 +8,14 @@ class RoomsController < ApplicationController
   end
 
   def new
-    @room = PublicRoom.new
+    @room = Room.new
   end
 
   def create
     @room = current_user.rooms.build(room_params)
-    @room.type = params[:type]
-    @room.owner_id = current_user.id
     if @room.save
       flash[:success] = 'room added!'
-      redirect_to public_room_path(@room)
+      redirect_to room_path(@room)
     else
       render 'new'
     end
@@ -31,6 +29,6 @@ class RoomsController < ApplicationController
   private
 
   def room_params
-    params.require(:public_room).permit(:title, :category, :description, :owner_id)
+    params.require(:room).permit(:title, :category, :description)
   end
 end

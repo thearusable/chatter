@@ -1,5 +1,5 @@
 MessagesInRoomsCount.times do |n|
-  user = [User.all.sample, User.first].sample
+  user = User.all.sample
 
   m = Message.new
   m.body = Faker::Hacker.say_something_smart
