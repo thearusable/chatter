@@ -15,7 +15,7 @@ class Room < ApplicationRecord
   end
 
   def last_message
-    if self.messages
+    if self.messages && self.messages.last
       self.messages.last.body.truncate_words(10)
     else
       "No messages"
