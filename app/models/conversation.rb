@@ -31,13 +31,11 @@ class Conversation < ApplicationRecord
   end
 
   def room_avatar(user)
-    avatar_url = nil
-    self.users.each do |u|
-      if u.id != user.id
-        avatar_url = u.avatar
-      end
+    if user.id == self.sender_id
+      User.find(self.recipient_id).avatar
+    else
+      User.find(self.sender_id).avatar
     end
-    avatar_url
   end
 
 end

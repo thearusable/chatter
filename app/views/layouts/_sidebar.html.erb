@@ -1,7 +1,29 @@
 <div class="ui right sidebar vertical menu">
   <div class="scrollable">
     <div class="ui relaxed divided list">
-      <%= render 'rooms/conversation', collection: @conversations %>
+
+    <% if $history != nil %>
+
+      <% $history.each do |entry| %>
+
+        <% if entry.class.name == "Conversation" %>
+
+          <%= render 'history/conversation', entry: entry %>
+
+        <% elsif entry.class.name == "Room" %>
+
+          <%= render 'history/room', entry: entry %>
+
+        <% end %>
+
+      <% end %>
+
+    <% else %>
+
+      <%= render 'history/empty' %>
+
+    <% end %>
+
     </div>
   </div>
 </div>

@@ -1,0 +1,11 @@
+<div class="item">
+  <div class="ui image">
+    <i class="large comments outline icon"></i>
+  </div>
+
+  <div class="content">
+    <%= link_to entry.room_name(current_user), polymorphic_path(entry), class: "header" %>
+    <div class="description"><%= entry.last_message %></div>
+  </div>
+</div>
+

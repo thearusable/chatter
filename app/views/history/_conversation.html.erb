@@ -1,0 +1,11 @@
+<div class="item">
+  <div class="ui mini circular image">
+    <%= image_tag entry.room_avatar(current_user).url(:thumb) %>
+  </div>
+
+  <div class="content">
+    <%= link_to entry.room_name(current_user), polymorphic_path(entry), class: "header" %>
+    <div class="description"><%= entry.last_message %></div>
+  </div>
+</div>
+

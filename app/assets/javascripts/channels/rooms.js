@@ -2,9 +2,6 @@ jQuery(document).on('turbolinks:load', function() {
 
   var senderID = $('meta[name=current-user-id]').attr('content');
   var allChats = document.getElementsByClassName('messages');
-  console.log(allChats[0].getAttribute("data-room-id"));
-  console.log(allChats[0].getAttribute("data-conversation-id"));
-  console.log(getChatAttribiute(allChats[0]));
   //split to two difrent
   for (var i = 0; i < allChats.length; i++) {
     messages_to_bottom(allChats[0]);
