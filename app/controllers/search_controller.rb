@@ -1,8 +1,8 @@
 class SearchController < ApplicationController
 
   def autocomplete
-    @users = User.order(:nickname).where('nickname LIKE ?', "%#{params[:query]}%")
-    @rooms = PublicRoom.order(:title).where('title LIKE ?', "%#{params[:query]}%")
+    @users = User.order(:nickname).where('lower(nickname) LIKE ?', "%#{params[:query].downcase}%")
+    @rooms = Room.order(:title).where('lower(title) LIKE ?', "%#{params[:query].downcase}%")
   end
 
 end

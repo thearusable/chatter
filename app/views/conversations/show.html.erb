@@ -1,12 +1,12 @@
 <div class="ui raised segment container">
   <h2 class="ui header"><%= @conversation.room_name(current_user) %></h2>
 
-  <div class="ui comments messages" data-room-id="<%= @conversation.id %>">
+  <div class="ui comments messages" data-conversation-id="<%= @conversation.id %>">
     <%= render @conversation.messages %>
   </div>
 
   <%= form_for Message.new, url: '#', html: {class: "ui reply form"} do |f| %>
-    <div class="form-group field" data-room-id="<%= @conversation.id %>">
+    <div class="form-group field" data-conversation-id="<%= @conversation.id %>">
       <%= f.text_area :body, class: 'message_body' %>
       <small class="text-muted">From 2 to 1000 characters</small>
     </div>

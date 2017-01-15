@@ -1,22 +1,27 @@
 jQuery(document).on('turbolinks:load', function() {
 
   var senderID = $('meta[name=current-user-id]').attr('content');
-  console.log(senderID);
   var allChats = document.getElementsByClassName('messages');
+  console.log(allChats[0].getAttribute("data-room-id"));
+  console.log(allChats[0].getAttribute("data-conversation-id"));
+  console.log(getChatAttribiute(allChats[0]));
+  //split to two difrent
   for (var i = 0; i < allChats.length; i++) {
-    messages_to_bottom(allChats[0])
+    messages_to_bottom(allChats[0]);
+
     var founded = false
     for(sub of App.cable.subscriptions.subscriptions){
-      if(allChats[i].getAttribute("data-room-id") == ( JSON && JSON.parse(sub.identifier) || $.parseJSON(sub.identifier) ).room_id){
+      if(allChats[i].getAttribute(getChatAttribiute(allChats[i])) == ( JSON && JSON.parse(sub.identifier) || $.parseJSON(sub.identifier) ).room_id){
         founded = true
         break;
       }
     }
 
     if(founded == false){
+
       App.cable.subscriptions.create({
-        channel: "RoomsChannel",
-        room_id: allChats[i].getAttribute("data-room-id")
+        channel: getChannel(allChats[i]),// "RoomsChannel",
+        room_id: allChats[i].getAttribute(getChatAttribiute(allChats[i]))
       }, {
         connected: function() {
         },
@@ -27,7 +32,7 @@ jQuery(document).on('turbolinks:load', function() {
           var message_boxes = $('.messages')
           id = ( JSON && JSON.parse(this.identifier) || $.parseJSON(this.identifier) ).room_id;
           for(var i = 0; i < message_boxes.length; i++){
-            if (message_boxes[i].getAttribute("data-room-id") === id) {
+            if (message_boxes[i].getAttribute(getChatAttribiute(message_boxes[i])) === id) {
               message_boxes[i].innerHTML += data['message'];
               messages_to_bottom(message_boxes[i]);
             }
@@ -47,8 +52,8 @@ jQuery(document).on('turbolinks:load', function() {
   $('textarea.message_body').keypress(function(event) {
       if (event.which == 13) {
           var msg = event.target.value
-          var room_id = event.target.parentNode.getAttribute("data-room-id")
-
+          var room_id = event.target.parentNode.getAttribute(getChatAttribiute(event.target.parentNode))
+          console.log(room_id);
           //find proper subscription and send message (all on first subscritpion also works)
           for (value of App.cable.subscriptions.subscriptions){
             if(room_id === (JSON && JSON.parse(value.identifier) || $.parseJSON(value.identifier)).room_id){
@@ -74,46 +79,24 @@ function unsub(room_id) {
     return false;
 }
 
+function getChatAttribiute(chat){
+  if (chat.getAttribute("data-room-id") != null){
+    return "data-room-id";
+  }
+  if (chat.getAttribute("data-conversation-id") != null){
+    return "data-conversation-id";
+  }
+}
+
+function getChannel(chat){
+  if (getChatAttribiute(chat) == "data-room-id"){
+    return "RoomsChannel"
+  }
+  if (getChatAttribiute(chat) == "data-conversation-id"){
+    return "ConversationsChannel"
+  }
+}
+
 function messages_to_bottom(element){
     element.scrollTop = element.scrollHeight;
 }
-
-/*
-  var messages, messages_to_bottom;
-  messages = $('#messages');
-  if ($('#messages').length > 0) {
-    messages_to_bottom = function() {
-      return messages.scrollTop(messages.prop("scrollHeight"));
-    };
-    messages_to_bottom();
-    App.global_chat = App.cable.subscriptions.create({
-      channel: "RoomsChannel",
-      room_id: messages.data('room-id')
-    }, {
-      connected: function() {},
-      disconnected: function() {},
-      received: function(data) {
-        messages.append(data['message']);
-        return messages_to_bottom();
-      },
-      send_message: function(message, room_id) {
-        return this.perform('send_message', {
-          message: message,
-          room_id: room_id
-        });
-      }
-    });
-    return $('#new_message').submit(function(e) {
-      var $this, textarea;
-      $this = $(this);
-      textarea = $this.find('#message_body');
-      if ($.trim(textarea.val()).length > 1) {
-        App.global_chat.send_message(textarea.val(), messages.data('room-id'));
-        textarea.val('');
-      }
-      e.preventDefault();
-      return false;
-    });
-  }
-});
-*/
