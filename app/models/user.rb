@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_attached_file :avatar, styles: { medium: "248x248#", thumb: "35x35#" }
 
-  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
+  validates_attachment_content_type :avatar, content_type: ["image/jpeg", "image/jpg", "image/png"]
 
   enum orientation: [:hetero, :homo, :bi]
   enum sex: [:male, :female]
@@ -68,6 +68,19 @@ class User < ApplicationRecord
 
   def completed_profile?
     self.nickname.present? && self.age.present? && self.sex.present? && self.orientation.present? && self.image.present?
+  end
+
+  def join_to_room(room_id)
+  founded = false
+  rooms.each do |r|
+    if (room_id == r.id)
+      founded = true
+      break;
+    end
+  end
+  if founded == false
+      rooms << Room.find(room_id)
+  end
   end
 
 end
