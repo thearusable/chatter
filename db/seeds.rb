@@ -1,5 +1,5 @@
 #how many
-UsersCount = 5
+UsersCount = 50
 PublicRoomsCount = 50
 MessagesInPublicRoomsCount = 500
 
