@@ -57,9 +57,7 @@ jQuery(document).on('turbolinks:load', function() {
             return response;
           },
           url: window.location.origin + '/autocomplete.json?query={query}'
-        },
-        debug: true,
-        verbose: true
+        }
       });
 
 })

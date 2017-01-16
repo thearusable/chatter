@@ -14,7 +14,6 @@ class User < ApplicationRecord
 
   has_many :conversations, :foreign_key => :sender_id
 
-  #has_many :messages
   has_many :messages, dependent: :destroy
   has_many :identities, dependent: :destroy
 
@@ -32,14 +31,6 @@ class User < ApplicationRecord
 
   def facebook_client
     @facebook_client ||= Facebook.client( access_token: facebook.accesstoken )
-  end
-
-  def instagram
-    identities.where( :provider => "instagram" ).first
-  end
-
-  def instagram_client
-    @instagram_client ||= Instagram.client( access_token: instagram.accesstoken )
   end
 
   def google_oauth2
@@ -62,7 +53,10 @@ class User < ApplicationRecord
   def update_profile(auth)
   #sprawdzanie czy nie nadpisuje
     if self.nickname.nil? then self.nickname = auth.info.nickname end
-    if self.avatar.exists? then self.avatar = auth.info.image end
+    self.avatar = auth.info.image
+    self.orientation = nil
+    self.sex = nil
+    self.age = nil
     self.save
   end
 

@@ -7,8 +7,8 @@
 
   <%= form_for @message, url: '#', html: {class: "ui reply form"} do |f| %>
     <div class="form-group field" data-room-id="<%= @room.id %>">
-      <%= f.text_area :body, class: 'message_body' %>
-      <small class="text-muted">From 2 to 1000 characters</small>
+      <%= f.text_area :body, class: 'message_body', required: true %>
+      <small class="text-muted">From 1 to 1000 characters</small>
     </div>
   <% end %>
 </div>

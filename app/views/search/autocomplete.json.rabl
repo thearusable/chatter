@@ -13,5 +13,6 @@ child @rooms => :rooms do
   attributes :title => :name, :body => :desc, :id => :id
   @rooms.each do |room|
     node(:url) { room_path(room) }
+    node(:desc) { room.category }
   end
 end

@@ -5,9 +5,9 @@ class Room < ApplicationRecord
 
   has_many :messages, as: :messagable
 
-  validates_presence_of :title, presence: true, length: {minimum: 2}
-  validates_presence_of :category, presence: true, length: {minimum: 2}
-  validates_presence_of :description, presence: true, length: {minimum: 2}
+  validates_presence_of :title, presence: true, length: {minimum: 2, maximum: 60}
+  validates_presence_of :category, presence: true, length: {minimum: 2, maximum: 60}
+  validates_presence_of :description, presence: true, length: {minimum: 2, maximum: 60}
 
 
   def room_name(user)

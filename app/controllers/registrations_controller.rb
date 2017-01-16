@@ -1,6 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
 
-  before_filter :configure_permitted_parameters
+  before_action :configure_permitted_parameters
 
   def update_resource(resource, params)
     if resource.encrypted_password.blank? # || params[:password].blank?
@@ -24,7 +24,6 @@ class RegistrationsController < Devise::RegistrationsController
 
   protected
 
-  # my custom fields are :name, :heard_how
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :email, :password, :password_confirmation])
     devise_parameter_sanitizer.permit(:account_update, keys: [:nickname, :age, :sex, :orientation, :email, :password, :password_confirmation, :current_password])

@@ -17,7 +17,7 @@ jQuery(document).on('turbolinks:load', function() {
     if(founded == false){
 
       App.cable.subscriptions.create({
-        channel: getChannel(allChats[i]),// "RoomsChannel",
+        channel: getChannel(allChats[i]),
         room_id: allChats[i].getAttribute(getChatAttribiute(allChats[i]))
       }, {
         connected: function() {
@@ -25,7 +25,6 @@ jQuery(document).on('turbolinks:load', function() {
         disconnected: function() {
         },
         received: function(data) {
-          console.log(data);
           var message_boxes = $('.messages')
           id = ( JSON && JSON.parse(this.identifier) || $.parseJSON(this.identifier) ).room_id;
           for(var i = 0; i < message_boxes.length; i++){
@@ -50,8 +49,7 @@ jQuery(document).on('turbolinks:load', function() {
       if (event.which == 13) {
           var msg = event.target.value
           var room_id = event.target.parentNode.getAttribute(getChatAttribiute(event.target.parentNode))
-          console.log(room_id);
-          //find proper subscription and send message (all on first subscritpion also works)
+
           for (value of App.cable.subscriptions.subscriptions){
             if(room_id === (JSON && JSON.parse(value.identifier) || $.parseJSON(value.identifier)).room_id){
               value.send_message(msg, room_id);
