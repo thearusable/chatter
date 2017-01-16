@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   def load_history
     if current_user
       history = current_user.conversations + current_user.rooms
-      $history = history.sort_by &:updated_at
+      $history = (history.sort_by &:updated_at).reverse
     end
   end
 

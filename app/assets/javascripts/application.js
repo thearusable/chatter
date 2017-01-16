@@ -50,6 +50,7 @@ jQuery(document).on('turbolinks:load', function() {
                 response.results[resultIndex].results.push({
                   title: item.name,
                   description: item.desc,
+                  url: item.url
                 });
               });
             });

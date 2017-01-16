@@ -1,4 +1,4 @@
-User.create(email: "testowy@testowy.com", nickname: "Testowy User", password: "testowy", password_confirmation: "testowy")
+User.create!(email: "testowy@testowy.com", nickname: "Testowy User", password: "testowy", password_confirmation: "testowy")
 
 UsersCount.times do |n|
     nick = Faker::Internet.user_name

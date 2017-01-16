@@ -1,8 +1,7 @@
 #how many
-UsersCount = 5
+UsersCount = 50
 PublicRoomsCount = 50
-PrivateRoomsCount = 50
-MessagesInRoomsCount = 500
+MessagesInPublicRoomsCount = 500
 
 s3 = Aws::S3::Client.new
 AllMaleSamples = s3.list_objects(bucket: ENV['S3_BUCKET_NAME'], prefix: 'seed/male/').contents

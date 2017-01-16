@@ -7,12 +7,12 @@
   <div class="ui segment">
     <div class="required field">
       <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true %>
+      <%= f.email_field :email, autofocus: true, value: "testowy@testowy.com", placeholder: "testowy@testowy.com" %>
     </div>
 
     <div class="required field">
       <%= f.label :password %><br />
-      <%= f.password_field :password, autocomplete: "off" %>
+      <%= f.password_field :password, autocomplete: "off", value: "testowy", placeholder: "testowy" %>
     </div>
 
     <% if devise_mapping.rememberable? -%>

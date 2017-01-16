@@ -11,4 +11,7 @@ end
 child @rooms => :rooms do
   collection @rooms, object_root: false
   attributes :title => :name, :body => :desc, :id => :id
+  @rooms.each do |room|
+    node(:url) { room_path(room) }
+  end
 end
