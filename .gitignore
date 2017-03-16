@@ -45,3 +45,4 @@ bower.json
 
 *.sqlite3
 *.cache
+.idea

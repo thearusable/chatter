@@ -1,4 +1,5 @@
-#how many
+puts "Seeds started."
+
 UsersCount = 50
 PublicRoomsCount = 50
 MessagesInPublicRoomsCount = 500
@@ -8,6 +9,8 @@ Male = s3.list_objects(bucket: ENV['S3_BUCKET_NAME'], prefix: 'seed/male/').cont
 AllMaleSamples = Male.drop(1)
 Female = s3.list_objects(bucket: ENV['S3_BUCKET_NAME'], prefix: 'seed/female/').contents
 AllFemaleSamples = Female.drop(1)
+
+puts "Founded #{AllMaleSamples.length + AllFemaleSamples.length} example images on Amazon S3."
 
  def image_male
   puts "https://s3-#{ENV['AWS_REGION']}.amazonaws.com/#{ENV['S3_BUCKET_NAME']}/#{AllMaleSamples.sample.key}"
@@ -23,6 +26,8 @@ AllFemaleSamples = Female.drop(1)
 User.create!(email: "testowy@testowy.com", nickname: "Testowy User", password: "testowy", password_confirmation: "testowy")
 
 UsersCount.times do |n|
+    puts "User: #{n+1}/#{UsersCount}"
+
     nick = Faker::Internet.user_name
     pass = Faker::Internet.password
     sex = rand(0..1)
@@ -43,7 +48,8 @@ UsersCount.times do |n|
 end
 
 #rooms
-PublicRoomsCount.times do
+PublicRoomsCount.times do |n|
+  puts "Room: #{n+1}/#{PublicRoomsCount}"
   Room.create!(
     title: Faker::Name.title,
     category: Faker::Lorem.word,
@@ -53,6 +59,7 @@ end
 
 #messages
 MessagesInPublicRoomsCount.times do |n|
+  puts "Messages: #{n+1}/#{MessagesInPublicRoomsCount}"
 
   room = Room.all.sample
 
@@ -67,3 +74,5 @@ MessagesInPublicRoomsCount.times do |n|
 
   m.save!
 end
+
+puts "Seeds ended."
