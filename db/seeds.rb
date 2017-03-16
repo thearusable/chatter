@@ -22,7 +22,6 @@ puts "Founded #{AllMaleSamples.length + AllFemaleSamples.length} example images 
    "https://s3-#{ENV['AWS_REGION']}.amazonaws.com/#{ENV['S3_BUCKET_NAME']}/#{AllFemaleSamples.sample.key}"
  end
 
-#users
 User.create!(email: "testowy@testowy.com", nickname: "Testowy User", password: "testowy", password_confirmation: "testowy")
 
 UsersCount.times do |n|
@@ -47,7 +46,6 @@ UsersCount.times do |n|
 
 end
 
-#rooms
 PublicRoomsCount.times do |n|
   puts "Room: #{n+1}/#{PublicRoomsCount}"
   Room.create!(
@@ -57,7 +55,6 @@ PublicRoomsCount.times do |n|
     )
 end
 
-#messages
 MessagesInPublicRoomsCount.times do |n|
   puts "Messages: #{n+1}/#{MessagesInPublicRoomsCount}"
 
